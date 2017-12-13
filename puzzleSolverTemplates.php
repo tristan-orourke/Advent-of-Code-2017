@@ -18,7 +18,7 @@ function echo_puzzle_form(
     
     echo "<div>";
     echo "<span>";
-    echo "<strong>Solution:</strong>";
+    echo "<strong>Solution: </strong>";
     echo "<span id='$output_id'></span>";
     echo "</span>";
     echo "</div>";
