@@ -10,37 +10,22 @@
     <?php
         require("header.php");
     ?>
-    <h2>Day 1: Inverse Captcha</h1>
-    <div class="puzzle" id="puzzle-1">
-        <h3 class="puzzle-title">Puzzle 1: Sum matching adjacent digits</h3>
-        <form id="captcha-form-1">
-            <span>
-                <input type="text" id="captcha-input-1" name="captcha-input-1" placeholder="captcha input string"/>
-                <input class="btn btn-primary" type="button" value="solve" onclick="InverseCaptchaAPI.solveCaptcha()"/>
-            </span>
-        </form>
-        <div>
-            <span>
-                <strong>Solution:</strong>
-                <span id="captcha-solution-1"></span>
-            </span>
-        </div>
-    </div>
-    <br/>
-    <div class="puzzle" id="puzzle-2">
-        <h3 class="puzzle-title">Puzzle 2: Sum matching digits halfway around string</h3>
-        <form id="captcha-form-2">
-            <span>
-                <input type="text" id="captcha-input-2" name="captcha-input-2" placeholder="captcha input string"/>
-                <input class="btn btn-primary" type="button" value="solve" onclick="InverseCaptchaAPI.solveCaptcha()"/>
-            </span>
-        </form>
-        <div>
-            <span>
-                <strong>Solution:</strong>
-                <span id="captcha-solution-2"></span>
-            </span>
-        </div>
-    </div>
-    
+    <h2>Day 1: InverseCaptcha</h2>
+    <?php
+        require_once("puzzleSolverTemplates.php");
+        echo_puzzle_form('puzzle-1',
+                         'Puzzle 1: Sum matching adjacent digits', 
+                         'captcha-form-1',
+                         'captcha-input-1',
+                         'captcha string',
+                         'captcha-solution-1');
+        echo_puzzle_form('puzzle-2',
+                         'Puzzle 2: Sum matching digits halfway around string', 
+                         'captcha-form-2',
+                         'captcha-input-2',
+                         'captcha string',
+                         'captcha-solution-2');
+        echo_js_tying_form_to_function('captcha-input-1', 'captcha-form-1', 'captcha-solution-1', 'InverseCaptchaAPI.sumMatchingAdjacentDigits');
+        echo_js_tying_form_to_function('captcha-input-2', 'captcha-form-2', 'captcha-solution-2', 'InverseCaptchaAPI.sumMatchingDigitsHalfwayAround');
+    ?>
 </body>
