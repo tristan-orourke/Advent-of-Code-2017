@@ -2,17 +2,21 @@
     <title>AoC: Day 1</title>
     <meta name="author" content="Tristan O'Rourke" />
     <meta name="description" content="Advent of Code 2017 Day 1 Solution" />
-    <script type="text/javascript" src="InverseCaptchaAPI.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    <script type="text/javascript" src="./js/InverseCaptchaAPI.js"></script>
 </head>
 
 <body>
-    <h1>Advent of Code - Day 1: Inverse Captcha</h1>
-    <div>
-        <h3>Puzzle 1: Sum matching adjacent digits</h3>
+    <?php
+        require("header.php");
+    ?>
+    <h2>Day 1: Inverse Captcha</h1>
+    <div class="puzzle" id="puzzle-1">
+        <h3 class="puzzle-title">Puzzle 1: Sum matching adjacent digits</h3>
         <form id="captcha-form-1">
             <span>
                 <input type="text" id="captcha-input-1" name="captcha-input-1" placeholder="captcha input string"/>
-                <input type="button" value="solve" onclick="InverseCaptchaAPI.solveCaptcha()"/>
+                <input class="btn btn-primary" type="button" value="solve" onclick="InverseCaptchaAPI.solveCaptcha()"/>
             </span>
         </form>
         <div>
@@ -23,12 +27,12 @@
         </div>
     </div>
     <br/>
-    <div>
-        <h3>Puzzle 2: Sum matching digits halfway around string</h3>
+    <div class="puzzle" id="puzzle-2">
+        <h3 class="puzzle-title">Puzzle 2: Sum matching digits halfway around string</h3>
         <form id="captcha-form-2">
             <span>
                 <input type="text" id="captcha-input-2" name="captcha-input-2" placeholder="captcha input string"/>
-                <input type="button" value="solve" onclick="InverseCaptchaAPI.solveCaptcha()"/>
+                <input class="btn btn-primary" type="button" value="solve" onclick="InverseCaptchaAPI.solveCaptcha()"/>
             </span>
         </form>
         <div>
