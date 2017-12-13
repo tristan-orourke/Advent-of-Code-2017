@@ -2,6 +2,7 @@
     <title>Advent of Code 2017</title>
     <meta name="author" content="Tristan O'Rourke" />
     <meta name="description" content="Advent of Code 2017 solution homepage" />
+    <link rel="stylesheet" type="text/css" href="style.css"/>
 </head>
 <body>
     <?php

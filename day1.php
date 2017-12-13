@@ -2,6 +2,7 @@
     <title>AoC: Day 1</title>
     <meta name="author" content="Tristan O'Rourke" />
     <meta name="description" content="Advent of Code 2017 Day 1 Solution" />
+    <link rel="stylesheet" type="text/css" href="./css/style.css"/>
     <script type="text/javascript" src="./js/InverseCaptchaAPI.js"></script>
 </head>
 
