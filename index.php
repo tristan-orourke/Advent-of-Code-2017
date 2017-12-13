@@ -10,7 +10,7 @@
     <h2>Tristan O'Rourke's Solutions</h2>
     <ul>
         <li>
-            <a id="day1-link" href="day1.html">Day 1</a>
+            <a id="day1-link" href="day1.php">Day 1</a>
         </li>
     </ul>
 </body>
