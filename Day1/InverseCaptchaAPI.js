@@ -15,13 +15,35 @@ InverseCaptchaAPI.sumMatchingAdjacentDigits = function(digits) {
     return sum;
 };
 
+InverseCaptchaAPI.sumMatchingDigitsHalfwayAround = function(digits) {
+    digits = digits.toString();
+    var sum = 0;
+    var halfway = parseInt(digits.length / 2);
+    for(var i=0; i<digits.length; i++) {
+        var opposite = (i + halfway) % digits.length;
+        if (digits[i] == digits[opposite]) {
+            sum += parseInt(digits[opposite]);
+        }
+    }
+    return sum;
+};
+
 InverseCaptchaAPI.solveCaptcha = function() {
-    var input = document.getElementById("captcha-input");
-    if (input) {
-        var solution = InverseCaptchaAPI.sumMatchingAdjacentDigits(input.value);
-        var outputElem = document.getElementById("captcha-solution");
-        if (outputElem) {
-            outputElem.textContent = solution;
+    var input1 = document.getElementById("captcha-input-1");
+    if (input1) {
+        var solution1 = InverseCaptchaAPI.sumMatchingAdjacentDigits(input1.value);
+        var outputElem1 = document.getElementById("captcha-solution-1");
+        if (outputElem1) {
+            outputElem1.textContent = solution1;
+        }
+    }
+    
+    var input2 = document.getElementById("captcha-input-2");
+    if (input2) {
+        var solution2 = InverseCaptchaAPI.sumMatchingDigitsHalfwayAround(input2.value);
+        var outputElem2 = document.getElementById("captcha-solution-2");
+        if (outputElem2) {
+            outputElem2.textContent = solution2;
         }
     }
 };

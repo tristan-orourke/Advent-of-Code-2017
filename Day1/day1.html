@@ -6,19 +6,37 @@
 </head>
 
 <body>
+    <h1>Advent of Code - Day 1: Inverse Captcha</h1>
     <div>
-        <h1>Puzzle 1: Inverse Captcha</h1>
-        <form>
+        <h3>Puzzle 1: Sum matching adjacent digits</h3>
+        <form id="captcha-form-1">
             <span>
-                <input type="text" id="captcha-input" name="captcha-input" placeholder="captcha input string"/>
+                <input type="text" id="captcha-input-1" name="captcha-input-1" placeholder="captcha input string"/>
                 <input type="button" value="solve" onclick="InverseCaptchaAPI.solveCaptcha()"/>
             </span>
         </form>
         <div>
             <span>
                 <strong>Solution:</strong>
-                <span id="captcha-solution"></span>
+                <span id="captcha-solution-1"></span>
             </span>
         </div>
     </div>
+    <br/>
+    <div>
+        <h3>Puzzle 2: Sum matching digits halfway around string</h3>
+        <form id="captcha-form-2">
+            <span>
+                <input type="text" id="captcha-input-2" name="captcha-input-2" placeholder="captcha input string"/>
+                <input type="button" value="solve" onclick="InverseCaptchaAPI.solveCaptcha()"/>
+            </span>
+        </form>
+        <div>
+            <span>
+                <strong>Solution:</strong>
+                <span id="captcha-solution-2"></span>
+            </span>
+        </div>
+    </div>
+    
 </body>
