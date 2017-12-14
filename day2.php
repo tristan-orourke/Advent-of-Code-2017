@@ -4,6 +4,8 @@
     <meta name="description" content="Advent of Code 2017 Day 2 Solution" />
     <link rel="stylesheet" type="text/css" href="./css/style.css"/>
     <script type="text/javascript" src="./js/CorruptionChecksumAPI.js"></script>
+    <script type="text/javascript" src="./js/TestingAPI.js"></script>
+
 </head>
 
 <body>
