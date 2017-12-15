@@ -15,25 +15,29 @@ function down(pos) {
 
 function addNextSpiralIndexToPositionMap(lastPosition, pos2IndexMap) {
     var newPos;
-    if (lastPosition = false) {
-        pos2IndexMap.set([0,0], 1);
+    if (lastPosition == false) {
+        pos2IndexMap.set([0,0].toString(), 1);
         return [0,0];
-    } else if (lastPosition = [0,0]) {
+    } else if (lastPosition[0] == 0 && lastPosition[1]==0) {
         newPos = right(lastPosition);
     } else {
-        if (pos2IndexMap.has(left(lastPosition))) {
+        if (pos2IndexMap.has(left(lastPosition).toString()) && !pos2IndexMap.has(up(lastPosition).toString())) {
             newPos = up(lastPosition);
-        } else if (pos2IndexMap.has(down(lastPosition))) {
+        } else if (pos2IndexMap.has(down(lastPosition).toString())) {
             newPos = left(lastPosition);
-        } else if (pos2IndexMap.has(right(lastPosition))) {
+        } else if (pos2IndexMap.has(right(lastPosition).toString())) {
             newPos = down(lastPosition);
         } else {
             newPos = right(lastPosition);
         }
     }
-    lastIndex = pos2IndexMap.get(lastPosition);
-    pos2IndexMap.set(newPos, lastIndex + 1);
+    var lastIndex = pos2IndexMap.get(lastPosition.toString());
+    pos2IndexMap.set(newPos.toString(), lastIndex + 1);
     return newPos;
+}
+
+function findSpiralIndexPosition(targetIndex, lastIndex, lastPosition) {
+    
 }
 
 SpiralMemoryAPI.findManhattanDistForSpiralIndex = function(spiralIndex) {
@@ -42,11 +46,11 @@ SpiralMemoryAPI.findManhattanDistForSpiralIndex = function(spiralIndex) {
         return "Index is too high. Please enter index less than 1 billion."
     }
     var pos2IndexMap = new Map();
-    pos2IndexMap.set([0,0], 1);
+    var lastPosition = [0,0];
+    pos2IndexMap.set(lastPosition.toString(), 1);
     
-    lastPosition = [0,0];
-    while(pos2IndexMap.get(lastPosition) != spiralIndex) {
+    while(pos2IndexMap.get(lastPosition.toString()) != spiralIndex) {
         lastPosition = addNextSpiralIndexToPositionMap(lastPosition, pos2IndexMap);
     }
-    return lastPosition[0] + lastPosition[1];
+    return Math.abs(lastPosition[0]) + Math.abs(lastPosition[1]);
 };
