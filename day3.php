@@ -15,18 +15,18 @@
         require_once("puzzleSolverTemplates.php");
         echo_puzzle_form('puzzle-1',
                          'Puzzle 1: Find distance to spiral memory element', 
-                         'index-form-1',
-                         'index-input-1',
+                         'spiral-form-1',
+                         'spiral-input-1',
                          'spiral index',
-                         'index-solution-1');
-        echo_js_tying_form_to_function('index-input-1', 'index-form-1', 'index-solution-1', 'SpiralMemoryAPI.findManhattanDistForSpiralIndex');
-        /*echo_puzzle_form('puzzle-2',
-                         'Puzzle 2: Checksum using even divisors in each row', 
-                         'checksum-form-2',
-                         'checksum-input-2',
-                         'spreadsheet',
-                         'checksum-solution-2');
-        echo_js_tying_form_to_function('checksum-input-2', 'checksum-form-2', 'checksum-solution-2', 'CorruptionChecksumAPI.sumWholeQuotientsPerRow');      
-        */
+                         'spiral-solution-1');
+        echo_js_tying_form_to_function('spiral-input-1', 'spiral-form-1', 'spiral-solution-1', 'SpiralMemoryAPI.findManhattanDistForSpiralIndex');
+        echo_puzzle_form('puzzle-2',
+                         'Puzzle 2: Find first spiral cumulator value larget than input', 
+                         'spiral-form-2',
+                         'spiral-input-2',
+                         'spiral value',
+                         'spiral-solution-2');
+        echo_js_tying_form_to_function('spiral-input-2', 'spiral-form-2', 'spiral-solution-2', 'SpiralMemoryAPI.findSpiralCumulatorValueLargerThanInput');      
+        
     ?>
 </body>
