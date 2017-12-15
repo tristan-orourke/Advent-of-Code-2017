@@ -20,13 +20,12 @@
                          'spreadsheet',
                          'checksum-solution-1');
         echo_js_tying_form_to_function('checksum-input-1', 'checksum-form-1', 'checksum-solution-1', 'CorruptionChecksumAPI.sumMaxDiffPerRow');
-        /*echo_puzzle_form('puzzle-2',
-                         'Puzzle 2: Sum matching digits halfway around string', 
-                         'captcha-form-2',
-                         'captcha-input-2',
-                         'captcha string',
-                         'captcha-solution-2');
-        echo_js_tying_form_to_function('captcha-input-2', 'captcha-form-2', 'captcha-solution-2', 'InverseCaptchaAPI.sumMatchingDigitsHalfwayAround');
-        */        
+        echo_puzzle_form('puzzle-2',
+                         'Puzzle 2: Checksum using even divisors in each row', 
+                         'checksum-form-2',
+                         'checksum-input-2',
+                         'spreadsheet',
+                         'checksum-solution-2');
+        echo_js_tying_form_to_function('checksum-input-2', 'checksum-form-2', 'checksum-solution-2', 'CorruptionChecksumAPI.sumWholeQuotientsPerRow');      
     ?>
 </body>
