@@ -19,14 +19,14 @@
                          'input-1',
                          'passphrase list',
                          'solution-1');
-        echo_js_tying_form_to_function('input-1', 'form-1', 'solution-1', 'HighEntropyPassphraseAPI.countValidPassphrases');
-        /*echo_puzzle_form('puzzle-2',
-                         'Puzzle 2: Find first spiral cumulator value larget than input', 
+        echo_js_tying_form_to_function('input-1', 'form-1', 'solution-1', 'HighEntropyPassphraseAPI.countPhrasesWithoutDuplicates');
+        echo_puzzle_form('puzzle-2',
+                         'Puzzle 2: Count the number of valid passphrases (phrases with no anagram words)', 
                          'form-2',
                          'input-2',
-                         'spiral value',
+                         'passphrase list',
                          'solution-2');
-        echo_js_tying_form_to_function('input-2', 'form-2', 'solution-2', 'SpiralMemoryAPI.findSpiralCumulatorValueLargerThanInput'); */     
+        echo_js_tying_form_to_function('input-2', 'form-2', 'solution-2', 'HighEntropyPassphraseAPI.countPhrasesWithoutAnagrams');      
         
     ?>
 </body>
