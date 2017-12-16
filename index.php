@@ -11,13 +11,16 @@
     <h2>Tristan O'Rourke's Solutions</h2>
     <ul>
         <li>
-            <a id="day1-link" href="day1.php">Day 1</a>
+            <a id="day1-link" href="day1.php">Day 1: Inverse Captcha</a>
         </li>
         <li>
-            <a id="day2-link" href="day2.php">Day 2</a>
+            <a id="day2-link" href="day2.php">Day 2: Corruption Checksum</a>
         </li>
         <li>
-            <a id="day3-link" href="day3.php">Day 3</a>
+            <a id="day3-link" href="day3.php">Day 3: Spiral Memory</a>
+        </li>
+        <li>
+            <a id="day4-link" href="day4.php">Day 4: High-Entropy Passphrases</a>
         </li>
     </ul>
 </body>
