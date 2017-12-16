@@ -12,7 +12,7 @@ function echo_puzzle_form(
     
     echo "<form id='$form_id'>";
     echo "<span>";
-    echo "<input type='text' id='$input_id' name='$input_id' placeholder='$input_placeholder'/>";
+    echo "<textarea id='$input_id' name='$input_id' placeholder='$input_placeholder'></textarea>";
     echo "<input class='btn btn-primary' type='submit' value='solve'/>";
     echo "</span>";
     

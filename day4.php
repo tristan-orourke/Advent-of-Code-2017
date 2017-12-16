@@ -3,7 +3,7 @@
     <meta name="author" content="Tristan O'Rourke" />
     <meta name="description" content="Advent of Code 2017 Day 4 Solution" />
     <link rel="stylesheet" type="text/css" href="./css/style.css"/>
-    <script type="text/javascript" src="./js/SpiralMemoryAPI.js"></script>
+    <script type="text/javascript" src="./js/HighEntropyPassphraseAPI.js"></script>
 </head>
 
 <body>
