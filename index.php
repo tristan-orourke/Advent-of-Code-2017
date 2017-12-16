@@ -22,5 +22,8 @@
         <li>
             <a id="day4-link" href="day4.php">Day 4: High-Entropy Passphrases</a>
         </li>
+        <li>
+            <a id="day5-link" href="day5.php">Day 5: Jump Mazes</a>
+        </li>
     </ul>
 </body>

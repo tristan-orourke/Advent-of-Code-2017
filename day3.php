@@ -1,7 +1,7 @@
 <head>
     <title>AoC: Day 3</title>
     <meta name="author" content="Tristan O'Rourke" />
-    <meta name="description" content="Advent of Code 2017 Day 2 Solution" />
+    <meta name="description" content="Advent of Code 2017 Day 3 Solution" />
     <link rel="stylesheet" type="text/css" href="./css/style.css"/>
     <script type="text/javascript" src="./js/SpiralMemoryAPI.js"></script>
 </head>
@@ -10,7 +10,7 @@
     <?php
         require("header.php");
     ?>
-    <h2>Day 2: Corruption Checksum</h2>
+    <h2>Day 3: Corruption Checksum</h2>
     <?php
         require_once("puzzleSolverTemplates.php");
         echo_puzzle_form('puzzle-1',
