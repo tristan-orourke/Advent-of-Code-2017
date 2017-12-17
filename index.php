@@ -25,5 +25,8 @@
         <li>
             <a id="day5-link" href="day5.php">Day 5: Jump Mazes</a>
         </li>
+        <li>
+            <a id="day6-link" href="day6.php">Day 6: Memory Reallocation</a>
+        </li>
     </ul>
 </body>
