@@ -6,6 +6,7 @@ function BalanceNode(name, weight, child_names) {
     this.child_names = child_names;
     this.children = [];
     this.parent = null;
+    this.full_weight = weight;
 }
 
 function BalanceTree() {
@@ -13,15 +14,22 @@ function BalanceTree() {
     this.orphan_nodes = [];
 }
 
+BalanceNode.prototype._adjustFullWeight = function(weight) {
+    this.full_weight += weight;
+    if (this.parent != null) {
+        this.parent._adjustFullWeight(weight);
+    }
+};
 
 BalanceNode.prototype.addChild = function(child) {
     this.children.push(child);
     child.parent = this;
+    this._adjustFullWeight(child.full_weight);
+    
 };
 
 BalanceNode.prototype.setParent = function(parent) {
-    this.parent = parent;
-    parent.children.push(this);
+    parent.addChild(this);
 }
 
 BalanceNode.prototype.rootParent = function(parent) {
@@ -44,12 +52,12 @@ function depthFirstLeafSearch(node) {
     }
 }
 
-function recursiveNodeSearch(node, validator) {
+function depthFirstSearch(node, validator) {
     if (validator(node)) {
         return node;
     } 
     for (var i=0; i<node.children.length; i++) {
-        var recurseResult = recursiveNodeSearch(node.children[i], validator);
+        var recurseResult = depthFirstSearch(node.children[i], validator);
         if (recurseResult) {
             return recurseResult;
         }
@@ -57,31 +65,16 @@ function recursiveNodeSearch(node, validator) {
     return null;
 }
 
-function treeSearch(tree, validator) {
-    //search first in the root
-    var node = recursiveNodeSearch(tree.root, validator);
-    if (!node) {
-        //search in the orphan nodes if not in the root
-        for (var i=0;i<tree.orphan_nodes.length; i++) {
-            node = recursiveNodeSearch(tree.orphan_nodes[i], validator);
-            if (node) {
-                break;
-            }
-        }
-    }
-    return node;
-}
-
 /*
     Search for a node in the tree that returns true for validator(node)
 */
 BalanceTree.prototype.search = function(validator) {
     //search first in the root
-    var node = recursiveNodeSearch(this.root, validator);
+    var node = depthFirstSearch(this.root, validator);
     if (!node) {
         //search in the orphan nodes if not in the root
         for (var i=0;i<this.orphan_nodes.length; i++) {
-            node = recursiveNodeSearch(this.orphan_nodes[i], validator);
+            node = depthFirstSearch(this.orphan_nodes[i], validator);
             if (node) {
                 break;
             }
@@ -177,12 +170,82 @@ BalanceTreeAPI.findRootNode = function(treeDescription) {
     }
 };
 
+function childrenAllWeighSame(node) {
+    if (node.children.length <= 1) {
+        return true;
+    }
+    return node.children.every(child => child.full_weight == node.children[0].full_weight);
+}
+
+/*
+Odd in terms of full_weight. If only 2 siblings, the heavier is the odd one out.
+*/
+function oddSiblingOut(node) {
+    if (node == null || node.parent == null) {
+        return false;
+    } else if (node.parent.children.length == 2) {
+        var sibling = node.parent.children[0];
+        if (sibling == node) {
+            sibling = node.parent.children[1];
+        }
+        return (node.full_weight > sibling.full_weight);
+    } else {
+        //if node weight matches at least one other sibling, its not the odd one out
+        for (var i=0; i<node.parent.children.length; i++) {
+            var sibling = node.parent.children[i];
+            if (sibling != node && sibling.full_weight == node.full_weight) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+function nodeIsImbalancedButChildrenAreBalanced(node) {
+    
+    return (oddSiblingOut(node) && childrenAllWeighSame(node) && !childrenAllWeighSame(node.parent));
+}
+
+function childWeight(node) {
+    return node.children.reduce((total, child) => total += child.full_weight, 0);
+}
+
+/*
+Returns what the specified node SHOULD weigh, to be balanced.
+This function assumes that all nodes, except the specified one, are already balanced.
+*/
+function calculateBalancedWeight(node) {
+    if (node.parent.children.length > 1) {
+        //find a sibling node
+        var sibling = node.parent.children[0];
+        if (sibling == node) {
+            sibling = node.parent.children[1];
+        }
+        return sibling.full_weight - childWeight(node);
+    } else {
+        //assuming all weight imbalance is node's fault, we can find the different between node's parent's
+        //correct and 'true' weight, and that is the difference for node.
+        var discrepency = calculateBalancedWeight(node.parent) - node.parent.full_weight;
+        return node.weight + discrepency;
+    }
+}
+
+BalanceTreeAPI.findCorrectionForIncorrectWeight = function(treeDescription) {
+    t = BalanceTreeAPI.generateTree(treeDescription);
+    var incorrectNode = t.search(nodeIsImbalancedButChildrenAreBalanced);
+    return calculateBalancedWeight(incorrectNode);
+}
+
+
+
+
+//TESTING
+
 function assert(expected, value, fail_message) {
     var message = (value == expected) ? "pass" : fail_message;
     console.log(message);
 }
 
-//TESTING
 var x = new BalanceNode('x', 12, ['y']);
 var y = new BalanceNode('y', 9, ['z']);
 x.addChild(y);

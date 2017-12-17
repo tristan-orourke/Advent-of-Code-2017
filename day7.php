@@ -22,11 +22,11 @@
         echo_js_tying_form_to_function('input-1', 'form-1', 'solution-1', 'BalanceTreeAPI.findRootNode');
         
         echo_puzzle_form('puzzle-2',
-                         'Puzzle 2: How many memory allocation cycles within the loop?', 
+                         'Puzzle 2: One node is imbalanced. What should its weight be', 
                          'form-2',
                          'input-2',
-                         'memory blocks',
+                         'node names, weights, and children',
                          'solution-2');
-        echo_js_tying_form_to_function('input-2', 'form-2', 'solution-2', 'BalanceTreeAPI.findRootNode');      
+        echo_js_tying_form_to_function('input-2', 'form-2', 'solution-2', 'BalanceTreeAPI.findCorrectionForIncorrectWeight');      
     ?>
 </body>
