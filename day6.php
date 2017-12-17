@@ -21,13 +21,12 @@
                          'solution-1');
         echo_js_tying_form_to_function('input-1', 'form-1', 'solution-1', 'MemoryReallocationAPI.countRedistributionCyclesToLoop');
         
-        /*echo_puzzle_form('puzzle-2',
-                         'Puzzle 2: Count the number of valid passphrases (phrases with no anagram words)', 
+        echo_puzzle_form('puzzle-2',
+                         'Puzzle 2: How many memory allocation cycles within the loop?', 
                          'form-2',
                          'input-2',
-                         'jump maze',
+                         'memory blocks',
                          'solution-2');
-        echo_js_tying_form_to_function('input-2', 'form-2', 'solution-2', 'JumpMazeAPI.stepsToLeaveVariableJumpMaze');      
-        */
+        echo_js_tying_form_to_function('input-2', 'form-2', 'solution-2', 'MemoryReallocationAPI.countRedistributionCyclesWithinLoop');      
     ?>
 </body>

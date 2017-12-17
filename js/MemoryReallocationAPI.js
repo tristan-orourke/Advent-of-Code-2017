@@ -37,3 +37,21 @@ MemoryReallocationAPI.countRedistributionCyclesToLoop = function(banksString) {
     }
     return steps;
 };
+
+MemoryReallocationAPI.countRedistributionCyclesWithinLoop = function(banksString) {
+    var banks = banksString.split('\t');
+    banks = banks.reduce((total, item) => {
+        total.push(parseInt(item));
+        return total;
+    }, []);
+    var prevStates = [];
+    var state = banks.join('\t');
+    var steps = 0;
+    while (!prevStates.includes(state)) {
+        prevStates.push(state);
+        MemoryReallocationAPI.reallocateBlocks(banks);
+        state = banks.join('\t');
+        steps += 1;
+    }
+    return steps - prevStates.indexOf(state);
+};
