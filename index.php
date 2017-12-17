@@ -31,5 +31,8 @@
         <li>
             <a id="day7-link" href="day7.php">Day 7: Recursion Circus</a>
         </li>
+        <li>
+            <a id="day8-link" href="day8.php">Day 8: Registry Parser</a>
+        </li>
     </ul>
 </body>

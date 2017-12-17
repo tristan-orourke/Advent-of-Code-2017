@@ -1,5 +1,5 @@
 <head>
-    <title>AoC: Day 6</title>
+    <title>AoC: Day 7</title>
     <meta name="author" content="Tristan O'Rourke" />
     <meta name="description" content="Advent of Code 2017 Day 7 Solution" />
     <link rel="stylesheet" type="text/css" href="./css/style.css"/>
