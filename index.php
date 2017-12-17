@@ -28,5 +28,8 @@
         <li>
             <a id="day6-link" href="day6.php">Day 6: Memory Reallocation</a>
         </li>
+        <li>
+            <a id="day7-link" href="day7.php">Day 7: Recursion Circus</a>
+        </li>
     </ul>
 </body>
