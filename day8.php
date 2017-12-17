@@ -1,9 +1,9 @@
 <head>
-    <title>AoC: Day 7</title>
+    <title>AoC: Day 8</title>
     <meta name="author" content="Tristan O'Rourke" />
-    <meta name="description" content="Advent of Code 2017 Day 7 Solution" />
+    <meta name="description" content="Advent of Code 2017 Day 8 Solution" />
     <link rel="stylesheet" type="text/css" href="./css/style.css"/>
-    <script type="text/javascript" src="./js/BalanceTreeAPI.js"></script>
+    <script type="text/javascript" src="./js/RegisterParserAPI.js"></script>
 </head>
 
 <body>
