@@ -14,12 +14,12 @@
     <?php
         require_once("puzzleSolverTemplates.php");
         echo_puzzle_form('puzzle-1',
-                         'Puzzle 1: How many steps does it take to leave the jump maze?', 
+                         'Puzzle 1: How many memory alocation cycles until hitting a loop?', 
                          'form-1',
                          'input-1',
-                         'jump maze',
+                         'memory blocks',
                          'solution-1');
-        echo_js_tying_form_to_function('input-1', 'form-1', 'solution-1', 'MemoryReallocationAPI.stepsToLeaveIncrementingJumpMaze');
+        echo_js_tying_form_to_function('input-1', 'form-1', 'solution-1', 'MemoryReallocationAPI.countRedistributionCyclesToLoop');
         
         /*echo_puzzle_form('puzzle-2',
                          'Puzzle 2: Count the number of valid passphrases (phrases with no anagram words)', 
