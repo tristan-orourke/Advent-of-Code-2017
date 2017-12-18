@@ -1,3 +1,5 @@
+//include TreeNode.js
+
 var BalanceTreeAPI = {};
 
 BalanceTreeAPI.parseNodeFromLine = function(line) {

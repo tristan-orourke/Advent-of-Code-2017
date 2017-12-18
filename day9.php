@@ -15,19 +15,19 @@
     <?php
         require_once("puzzleSolverTemplates.php");
         echo_puzzle_form('puzzle-1',
-                         'Puzzle 1: What sum value of non-garbage groups in the stream?', 
+                         'Puzzle 1: What is the sum score of non-garbage groups in the stream?', 
                          'form-1',
                          'input-1',
                          'stream',
                          'solution-1');
-        echo_js_tying_form_to_function('input-1', 'form-1', 'solution-1', 'StreamProcessingAPI.sumGroupValues');
+        echo_js_tying_form_to_function('input-1', 'form-1', 'solution-1', 'StreamProcessingAPI.sumScoreOfStreamGroups');
         
         echo_puzzle_form('puzzle-2',
-                         'Puzzle 2: What was the highest ever register value throughout the commands', 
+                         'Puzzle 2: How many non-canceled garbage characters are there?', 
                          'form-2',
                          'input-2',
                          'register commands',
                          'solution-2');
-        echo_js_tying_form_to_function('input-2', 'form-2', 'solution-2', 'StreamProcessingAPI.sumGroupValues');      
+        echo_js_tying_form_to_function('input-2', 'form-2', 'solution-2', 'StreamProcessingAPI.countNonCanceledGarbageCharacters');      
     ?>
 </body>
