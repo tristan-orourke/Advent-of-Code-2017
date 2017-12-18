@@ -7,7 +7,9 @@ class Node {
     }
     
     addChild(node) {
-        this.children.push(node);
+        if (!this.children.includes(node)) {
+            this.children.push(node);
+        }
         node.parent = this;
     }
     addParent(parent) {
@@ -35,7 +37,7 @@ function depthFirstSearch(node, condition) {
     } 
     else {
         for (var i=0; i<node.children.length; i++) {
-            var recurseResult = depthFirstSearch(node.children[i], validator);
+            var recurseResult = depthFirstSearch(node.children[i], condition);
             if (recurseResult) {
                 return recurseResult;
             }
@@ -71,8 +73,12 @@ class Tree {
     breadthFirstSearch(condition) {
         return breadthFirstSearch([this.root], condition);
     }
+    search(condition) {
+        //search defaults to breadth first
+        return this.breadthFirstSearch(condition);
+    }
     findNodeById(id) {
-        return breadthFirstSearch((node)=>node.id == id);
+        return this.breadthFirstSearch((node)=>(node.id == id));
     }
 }
 
@@ -85,19 +91,21 @@ class TreeBuilder {
     
     addNode(node, childIds) {
         this.parent2ChildMap[node.id] = childIds;
-        //search existing trees for this node's parent
-        var parentFound = false;
-        for (var i=0;i<this.trees.length;i++) {
-            //Search tree for a node whose children (stored in seperate map) include node being added
-            var parent = this.tree[i].depthFirstSearch((n) => this.parent2ChildMap[n.id].includes[node.id]);
-            if (parent) {
-                parentFound = true;
-                parent.addChild(node);
-                break;
+        childIds.forEach((item, index) => this.child2ParentMap[item] = node.id);
+        
+        //Check if an already added node is this node's parent
+        var parentId = this.child2ParentMap[node.id];
+        if (parentId) {
+            //Find the node with the parent id 
+            for (var i=0;i<this.trees.length;i++) {
+                var parent = this.trees[i].findNodeById(parentId)
+                if (parent) {
+                    parent.addChild(node);  
+                    break;
+                }
             }
-        }
-        //If this node's parent is not yet in any of the trees, this node can start a new tree
-        if (!parentFound) {
+        } else {
+            //If this node's parent has not yet been added, this node can start a new tree
             this.trees.push(new Tree(node))
         }
         
