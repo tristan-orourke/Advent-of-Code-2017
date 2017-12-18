@@ -1,8 +1,9 @@
 <head>
-    <title>AoC: Day 8</title>
+    <title>AoC: Day 9</title>
     <meta name="author" content="Tristan O'Rourke" />
-    <meta name="description" content="Advent of Code 2017 Day 8 Solution" />
+    <meta name="description" content="Advent of Code 2017 Day 9 Solution" />
     <link rel="stylesheet" type="text/css" href="./css/style.css"/>
+    <script type="text/javascript" src="./js/TreeNode.js"></script>
     <script type="text/javascript" src="./js/StreamProcessingAPI.js"></script>
 </head>
 

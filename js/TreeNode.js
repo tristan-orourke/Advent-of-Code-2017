@@ -1,4 +1,4 @@
-export class Node {
+class Node {
     constructor(id, data) {
         this.id = id;
         this.data = data;
@@ -61,7 +61,7 @@ function breadthFirstSearch(nodesOfGivenLevel, condition) {
     return breadthFirstSearch(nextLevel, condition);
 }
     
-export class Tree {
+class Tree {
     constructor(root) {
         this.root = root;
     }
@@ -72,11 +72,11 @@ export class Tree {
         return breadthFirstSearch([this.root], condition);
     }
     findNodeById(id) {
-        return breadthFirstSearch((node)=>return node.id == id);
+        return breadthFirstSearch((node)=>node.id == id);
     }
 }
 
-export class TreeBuilder {
+class TreeBuilder {
     constructor() {
         this.trees = [];
         this.parent2ChildMap = {};
@@ -114,76 +114,3 @@ export class TreeBuilder {
     
     
 }
-
-/*
-    Search for a node in the tree that returns true for validator(node)
-*/
-BalanceTree.prototype.search = function(validator) {
-    //search first in the root
-    var node = depthFirstSearch(this.root, validator);
-    if (!node) {
-        //search in the orphan nodes if not in the root
-        for (var i=0;i<this.orphan_nodes.length; i++) {
-            node = depthFirstSearch(this.orphan_nodes[i], validator);
-            if (node) {
-                break;
-            }
-        }
-    }
-    return node;
-};
-
-BalanceTree.prototype.leafNodes = function() {
-    return depthFirstLeafSearch(this.root);
-};
-
-BalanceTree.prototype.searchForName = function(nodeName) {
-    return this.search((node) => (node.name == nodeName));
-};
-
-BalanceTree.prototype.searchForNodeWithChild = function(childName) {
-    return this.search((node) => node.child_names.includes(childName));
-}
-
-
-
-BalanceTree.prototype.addNode = function(node) {
-    //if root doesn't exist, make this root
-    if (this.root == null) {
-        this.root = node;
-    } else if (node.child_names.includes(this.root.name)) {
-        //if new node is root's parent, make it the new root
-        node.addChild(this.root);
-        this.root = node;
-        
-        //need to search orphan_nodes for something that could be this node's parent
-        var parent = this.searchForNodeWithChild(node.name);
-        if (parent) {
-            parent.addChild(node);
-            this.root = parent.rootParent();
-            //Now that its root, remove it from orphans
-            this.orphan_nodes.splice(this.orphan_nodes.indexOf(this.root), 1); 
-        }
-        
-        
-    } else {
-        
-        //Search for this node's parent in the tree;
-        var parent = this.searchForNodeWithChild(node.name);
-        if (parent) {
-            parent.addChild(node);
-        } else {
-            //if parent not in tree, add this to orphan nodes
-            this.orphan_nodes.push(node);
-        }
-    }
-    
-    //check for children of this node among the orphan nodes
-    //iterate backward so we can splice un-orphaned nodes out easily
-    for (var i=this.orphan_nodes.length-1; i>=0; i--) {
-        if (node.child_names.includes(this.orphan_nodes[i].name)) {
-            node.addChild(this.orphan_nodes[i]);
-            this.orphan_nodes.splice(i, 1);
-        }
-    }
-};
