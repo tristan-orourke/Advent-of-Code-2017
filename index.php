@@ -37,5 +37,8 @@
         <li>
             <a id="day9-link" href="day9.php">Day 9: Stream Processor</a>
         </li>
+        <li>
+            <a id="day10-link" href="day10.php">Day 10: Knot Hash</a>
+        </li>
     </ul>
 </body>
