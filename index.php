@@ -34,5 +34,8 @@
         <li>
             <a id="day8-link" href="day8.php">Day 8: Registry Parser</a>
         </li>
+        <li>
+            <a id="day9-link" href="day9.php">Day 9: Stream Processor</a>
+        </li>
     </ul>
 </body>

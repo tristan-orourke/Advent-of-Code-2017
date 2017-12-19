@@ -4,6 +4,7 @@
     <meta name="description" content="Advent of Code 2017 Day 7 Solution" />
     <link rel="stylesheet" type="text/css" href="./css/style.css"/>
     <script type="text/javascript" src="./js/BalanceTreeAPI.js"></script>
+    <script type="text/javascript" src="./js/TreeNode.js"></script>
 </head>
 
 <body>
