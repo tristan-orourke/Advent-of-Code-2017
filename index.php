@@ -40,5 +40,8 @@
         <li>
             <a id="day10-link" href="day10.php">Day 10: Knot Hash</a>
         </li>
+        <li>
+            <a id="day11-link" href="day11.php">Day 11: Hex Grid</a>
+        </li>
     </ul>
 </body>
