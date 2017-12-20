@@ -19,14 +19,14 @@
                          'input-1',
                          'reversal lengths',
                          'solution-1');
-        echo_js_tying_form_to_function('input-1', 'form-1', 'solution-1', 'KnotHashAPI.multiplyFirstTwoDigitsResultingFromKnotHash');
+        echo_js_tying_form_to_function('input-1', 'form-1', 'solution-1', 'KnotHashAPI.multiplyFirstTwoDigitsResultingFromOneRoundKnotHash');
         
         echo_puzzle_form('puzzle-2',
                          'Puzzle 2:', 
                          'form-2',
                          'input-2',
-                         'register commands',
+                         'hashing key',
                          'solution-2');
-        echo_js_tying_form_to_function('input-2', 'form-2', 'solution-2', 'StreamProcessingAPI.countNonCanceledGarbageCharacters');      
+        echo_js_tying_form_to_function('input-2', 'form-2', 'solution-2', 'KnotHashAPI.runKnotHash');      
     ?>
 </body>
