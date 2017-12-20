@@ -62,6 +62,19 @@ HexGridAPI.shortestReturnDistance = function (path) {
     return HexGridAPI.distanceBetweenHexPoints(pos, new Point(0,0));
 };
 
+HexGridAPI.maxDistanceInPath = function (path) {
+    var steps = path.split(',');
+    var pos = new Point(0, 0);
+    var origin = new Point(0,0);
+    var maxDistance = 0;
+    for (var i = 0; i < steps.length; i++) {
+        pos = pos.add(HexGridAPI.directionStringToPoint(steps[i]));
+        var distance = HexGridAPI.distanceBetweenHexPoints(pos, origin);
+        maxDistance = Math.max(maxDistance, distance);
+    }
+    return maxDistance;
+};
+
 //TESTING
 function assert(expected, actual) {
     if (expected != actual) {
