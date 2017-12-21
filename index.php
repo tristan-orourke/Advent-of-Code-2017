@@ -43,5 +43,8 @@
         <li>
             <a id="day11-link" href="day11.php">Day 11: Hex Grid</a>
         </li>
+        <li>
+            <a id="day12-link" href="day12.php">Day 12: Pipe Graphs</a>
+        </li>
     </ul>
 </body>
