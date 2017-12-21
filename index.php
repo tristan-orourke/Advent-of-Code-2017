@@ -46,5 +46,8 @@
         <li>
             <a id="day12-link" href="day12.php">Day 12: Pipe Graphs</a>
         </li>
+        <li>
+            <a id="day13-link" href="day13.php">Day 13: Firewall Scanners</a>
+        </li>
     </ul>
 </body>
