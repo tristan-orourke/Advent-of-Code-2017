@@ -23,11 +23,11 @@
         echo_js_tying_form_to_function('input-1', 'form-1', 'solution-1', 'PipeGraphsAPI.countNodesInGraphWithNode0');
         
         echo_puzzle_form('puzzle-2',
-                         'Puzzle 2: Determine the highest distance from origin at any point on the hex path', 
+                         'Puzzle 2: Count number of disconnected graphs', 
                          'form-2',
                          'input-2',
-                         'path steps',
+                         'node definitions',
                          'solution-2');
-        echo_js_tying_form_to_function('input-2', 'form-2', 'solution-2', 'HexGridAPI.maxDistanceInPath');      
+        echo_js_tying_form_to_function('input-2', 'form-2', 'solution-2', 'PipeGraphsAPI.countNumberOfGraphs');      
     ?>
 </body>

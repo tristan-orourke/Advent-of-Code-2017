@@ -34,3 +34,18 @@ PipeGraphsAPI.countNodesInGraphWithNode0 = function(nodeDefinitions) {
     }
     return 0;
 };
+
+PipeGraphsAPI.countNumberOfGraphs = function(nodeDefinitions) {
+    var graphBuilder;
+    //Check if this set of nodes was solved recenetly, and still is in the cache;
+    if (graphBuildersCache[nodeDefinitions]) {
+        graphBuilder = graphBuildersCache[nodeDefinitions];
+    } else {
+        var nodeDefs = nodeDefinitions.split('\n');
+        graphBuilder = new GraphBuilder();
+        nodeDefs.forEach((def) => parseNodeDefinition(def, graphBuilder));
+        
+        graphBuildersCache[nodeDefinitions] = graphBuilder;
+    }   
+    return graphBuilder.graphs.length;
+};
