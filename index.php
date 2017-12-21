@@ -49,5 +49,8 @@
         <li>
             <a id="day13-link" href="day13.php">Day 13: Firewall Scanners</a>
         </li>
+        <li>
+            <a id="day14-link" href="day14.php">Day 14: Disk Defragmentation</a>
+        </li>
     </ul>
 </body>
