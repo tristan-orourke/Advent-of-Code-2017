@@ -37,9 +37,9 @@ function parseScannerDescription(description) {
     }
 }
 
-FirewallAPI.calculateTripSeverityStartingAtTime = function(t, scannerSet) {
+FirewallAPI.calculateTripSeverityStartingAtTime = function(t, scanners) {
     var severity = 0;
-    scannerSet.forEach(scanner=>{
+    scanners.forEach(scanner=>{
         //There is a collision if scanner is at position 0 at time t+depth
         if (scanner.positionAtTime(t+scanner.depth) == 0) {
             severity += scanner.severity();
@@ -48,12 +48,34 @@ FirewallAPI.calculateTripSeverityStartingAtTime = function(t, scannerSet) {
     return severity;
 };
 
-FirewallAPI.tripSeverityStartingAtTZero = function(scannerDescriptions) {
-    var scannerSet = new Set();
+FirewallAPI.scannersCatchPacketStartingAtTimeT = function(t, scanners) {
+    packetIsCaught = scanners.some(scanner=> {
+        //There is a collision if scanner is at position 0 at time t+depth
+        return scanner.positionAtTime(t+scanner.depth) == 0;
+    });
+    return packetIsCaught;
+}
+
+FirewallAPI.extractScannersFromStrings = function(scannerDescriptions) {
+    var scanners = [];
     var scannerLines = scannerDescriptions.split('\n');
     for(var i=0; i<scannerLines.length; i++) {
         var scanner = parseScannerDescription(scannerLines[i]);
-        scannerSet.add(scanner);
+        scanners.push(scanner);
     }
-    return FirewallAPI.calculateTripSeverityStartingAtTime(0, scannerSet);
+    return scanners;
+}
+
+FirewallAPI.tripSeverityStartingAtTZero = function(scannerDescriptions) {
+    var scanners = FirewallAPI.extractScannersFromStrings(scannerDescriptions);
+    return FirewallAPI.calculateTripSeverityStartingAtTime(0, scanners);
+}
+
+FirewallAPI.shortestDelayRequiredToPassAllScanners = function(scannerDescriptions) {
+    var scanners = FirewallAPI.extractScannersFromStrings(scannerDescriptions);
+    var delay = 0;
+    while (FirewallAPI.scannersCatchPacketStartingAtTimeT(delay, scanners)) {
+        delay += 1;
+    }
+    return delay;
 }

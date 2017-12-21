@@ -22,11 +22,11 @@
         echo_js_tying_form_to_function('input-1', 'form-1', 'solution-1', 'FirewallAPI.tripSeverityStartingAtTZero');
         
         echo_puzzle_form('puzzle-2',
-                         'Puzzle 2: ', 
+                         'Puzzle 2: Shortest delay required to pass through all scanners undetected', 
                          'form-2',
                          'input-2',
                          'scanner list as [depth: range]',
                          'solution-2');
-        echo_js_tying_form_to_function('input-2', 'form-2', 'solution-2', 'FirewallAPI.tripSeverityStartingAtTZero');      
+        echo_js_tying_form_to_function('input-2', 'form-2', 'solution-2', 'FirewallAPI.shortestDelayRequiredToPassAllScanners');      
     ?>
 </body>
