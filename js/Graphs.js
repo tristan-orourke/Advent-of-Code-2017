@@ -172,7 +172,7 @@ class GraphBuilder {
         //iterate backwards for removal, not incuding the first, so we keep the first containing graph
         for (var i = containingGraphInds.length-1; i > 0; i--) {
             var removalIndex = containingGraphInds[i];
-            this.graphs.splice[removalIndex];
+            this.graphs.splice(removalIndex, 1);
         }
     }
 }
