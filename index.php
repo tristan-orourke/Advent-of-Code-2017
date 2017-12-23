@@ -52,5 +52,8 @@
         <li>
             <a id="day14-link" href="day14.php">Day 14: Disk Defragmentation</a>
         </li>
+        <li>
+            <a id="day15-link" href="day15.php">Day 15: Dueling Generators</a>
+        </li>
     </ul>
 </body>
