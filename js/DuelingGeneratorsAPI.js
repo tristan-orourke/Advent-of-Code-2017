@@ -47,5 +47,5 @@ DuelingGeneratorsAPI.judgeMatchesIn40MilGenerations = function(initialValuesStri
 var testCount = DuelingGeneratorsAPI.judgeGenerators(65, 8921, 5);
 if (testCount != 1) throw new Error("testCount == " + testCount);
 var realCount = DuelingGeneratorsAPI.judgeGenerators(634, 301, 4000000);
-if (realCount != 1) throw new Error("realCount == " + realCount);
+if (realCount != 573) throw new Error("realCount == " + realCount);
 else console.log("realCount == " + realCount);
