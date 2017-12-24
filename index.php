@@ -58,6 +58,9 @@
         <li>
             <a id="day18-link" href="day18.php">Day 18: Duet Assembly</a>
         </li>
+        <li>
+            <a id="day19-link" href="day19.php">Day 19: Packet Routing</a>
+        </li>
     </ul>
 </body>
 
