@@ -4,7 +4,7 @@ import time
 
 def spin(s, i):
 	i = int(i)
-	return s[-i:] + s[0:-i]
+	return s[-i:] + s[:-i]
 
 def exchange(s, i, j):
 	i = int(i)
@@ -50,13 +50,21 @@ def parseMoveSet(moveString):
 
 def doMoveSet(startString, moveString, repeats):
 	s = startString
+	seen = [s]
 	moves = parseMoveSet(moveString)
 	startTime = time.time()
 	for i in range(repeats):
 		for m in moves:
-			func = m[0]
+			f = m[0]
 			args = m[1]
-			s = func(s, *args)
+			s = f(s, *args)
+		if s in seen:
+			cycle = seen[seen.index(s):]
+			s = cycle[repeats % len(cycle)]
+			break;
+		else:
+			seen.append(s)
+
 	endTime = time.time()
 	print('Time elapsed = '+ str(endTime - startTime))
 	return s
@@ -70,4 +78,4 @@ start = 'abcdefghijklmnop'
 assert('glnacbhedpfjkiom' == doMoveSet(start, dance, 1))
 #print(parseMoveSet(start, dance))
 
-print(doMoveSet(list(start), dance, 1000).join(''))
+print(doMoveSet(start, dance, 1000000000))
