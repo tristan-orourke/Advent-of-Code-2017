@@ -13,7 +13,7 @@ def exchange(s, i, j):
 	x = [i,j]
 	x.sort()
 	i,j = x
-	return s[0:i] + s[j] + s[i+1:j] + s[i] + s[j+1:] 
+	return s[0:i] + s[j:j+1] + s[i+1:j] + s[i:i+1] + s[j+1:] 
 
 def partner(s, a, b):
 	i = s.index(a)
@@ -67,7 +67,7 @@ start = 'abcdefghijklmnop'
 
 #testInput = 'abcde'
 #assert('baedc' == parseMoveSet(testInput, 's1,x3/4,pe/b'))
-
+assert('glnacbhedpfjkiom' == doMoveSet(start, dance, 1))
 #print(parseMoveSet(start, dance))
 
-print(doMoveSet(start, dance, 1000))
+print(doMoveSet(list(start), dance, 1000).join(''))
