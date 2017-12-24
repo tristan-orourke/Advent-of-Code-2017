@@ -24,30 +24,39 @@ sPattern = re.compile('s(\d+)')
 xPattern = re.compile('x(\d+)/(\d+)')
 pPattern = re.compile('p(\w+)/(\w+)')
 
-def parseMove(s, move):
+'''
+returns [f, a] where f is a function, and a is a list of args
+'''
+def parseMove(move):
 	sMatch = sPattern.match(move)
 	xMatch = xPattern.match(move)
 	pMatch = pPattern.match(move)
 	if (sMatch):
-		return spin(s, sMatch[1])
+		return spin, [sMatch[1]]
 	elif (xMatch):
-		return exchange(s, xMatch[1], xMatch[2])
+		return exchange, [xMatch[1], xMatch[2]]
 	elif (pMatch):
-		return partner(s, pMatch[1], pMatch[2])
+		return partner, [pMatch[1], pMatch[2]]
 	else:
-		return s
+		return None
 
-def parseMoveSet(start, moves):
-	output = start
-	for s in moves.split(','):
-		output = parseMove(output, s)
-	return output
+def parseMoveSet(moveString):
+	moves = []
+	for m in moveString.split(','):
+		move = parseMove(m)
+		if move:
+			moves.append(move)
+	return moves
 
-def repeatMoveSet(start, moves, repeats):
-	s = start
+def doMoveSet(startString, moveString, repeats):
+	s = startString
+	moves = parseMoveSet(moveString)
 	startTime = time.time()
 	for i in range(repeats):
-		s = parseMoveSet(s, moves)
+		for m in moves:
+			func = m[0]
+			args = m[1]
+			s = func(s, *args)
 	endTime = time.time()
 	print('Time elapsed = '+ str(endTime - startTime))
 	return s
@@ -61,4 +70,4 @@ start = 'abcdefghijklmnop'
 
 #print(parseMoveSet(start, dance))
 
-print(repeatMoveSet(start, dance, 1000))
+print(doMoveSet(start, dance, 1000))
