@@ -57,3 +57,10 @@
         </li>
     </ul>
 </body>
+
+<!-- Useful code snippet for debugging js
+var script = document.createElement('script');
+script.type = 'text/javascript';
+script.src = 'http://localhost/advent-of-code-2017/js/AssemblyAPI.js';
+document.head.appendChild(script);
+-->
