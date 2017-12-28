@@ -65,7 +65,7 @@ def enhanceGrid(grid, rulesMap):
 
 START_PATTERN = '.#./..#/###'
 
-def run1(input, iterations):
+def run(input, iterations):
 	rulesMap = {}
 	for rule in input.split('\n'):
 		addPatternTransformRule(rule, rulesMap)
@@ -79,8 +79,9 @@ def run1(input, iterations):
 
 if __name__ == '__main__':
 	testInput = '../.# => ##./#../...\n.#./..#/### => #..#/..../..../#..#'
-	testOutput = run1(testInput, 2)
+	testOutput = run(testInput, 2)
 
 	with open('day21_input.txt') as f:
 		realInput = f.read()
-	output = run1(realInput, 5)
+	output = run(realInput, 5)
+	output = run(realInput, 18)
