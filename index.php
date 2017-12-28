@@ -61,6 +61,9 @@
         <li>
             <a id="day19-link" href="day19.php">Day 19: Packet Routing</a>
         </li>
+        <li>
+            <a id="day23-link" href="day23.php">Day 23: Coprocessor Conflagration</a>
+        </li>
     </ul>
 </body>
 
