@@ -67,8 +67,71 @@ class Program {
 	}
 }
 
+function runProgramRewrittenByHand() {
+    var a = 0;
+    var b = 0;
+    var c = 0;
+    var d = 0;
+    var e = 0;
+    var f = 0;
+    var g = 0;
+    
+    b = 93;
+    c = b;
+    b = b * 100;
+    b = b + 100000; // b = 109300
+    c = b;
+    c += 17000;
+    while (true) {
+        f = 1;
+        d = 2;
+        while(true) {
+            e = 2; //rm
+            while(true) {
+                if ((d*e) == b) {
+                    f = 0
+                }
+                e = e + 1;
+                g = e;
+                g = g - b
+                if (e == b)
+                    break;
+                }
+            }
+            d += 1;
+            g = d;
+            g = g - b;
+            if (g == 0) {
+                break;
+            }
+        }
+        if (f == 0) {
+            h += 1;
+        }
+        g = b;
+        g = g - c;
+        if (g == 0) {
+            //EXIT
+            break;
+        }
+        b += 17;   
+    }
+    return h;
+}
+
+
+
+
 CoprocessorAPI.countMulsInvoked = function(instructionsStr) {
     const instructions = instructionsStr.split('\n');
     p = new Program(instructions);
     return p.runProgramCountMuls()
 };
+
+CoprocessorAPI.finalValueOfH = function(instructionStr) {
+    const instructions = instructionsStr.split('\n');
+    p = new Program(instructions);
+    p.setReg('a', 1)
+    return p.runProgramCountMuls()
+};
+
