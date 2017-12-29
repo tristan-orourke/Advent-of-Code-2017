@@ -62,6 +62,15 @@ function breadthFirstSearch(nodesOfGivenLevel, condition) {
     }
     return breadthFirstSearch(nextLevel, condition);
 }
+
+function searchAllNodes(node, condition, results) {
+    if (condition(node)) {
+        results.push(node);
+    }
+    for (var i=0; i<node.children.length; i++) {
+        searchAllNodes(node.children[i], condition, results);
+    }
+}
     
 class Tree {
     constructor(root) {
@@ -79,6 +88,12 @@ class Tree {
     }
     findNodeById(id) {
         return this.breadthFirstSearch((node)=>(node.id == id));
+    }
+    findAllNodes(condition) {
+        //returns all nodes that satisfy condition
+        var results = [];
+        searchAllNodes(this.root, condition, results);
+        return results;
     }
 }
 

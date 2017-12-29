@@ -64,6 +64,9 @@
         <li>
             <a id="day23-link" href="day23.php">Day 23: Coprocessor Conflagration</a>
         </li>
+        <li>
+            <a id="day24-link" href="day24.php">Day 24: Electromagnetic Bridges</a>
+        </li>
     </ul>
 </body>
 
