@@ -53,10 +53,19 @@ function calculateBridgeNodeStrength(bridgeNode) {
     return components;
 }
 
+function calculateMaxBridgeStrength(bridgeNode) {
+    if (bridgeNode.children.length == 0) {
+        return bridgeNode.data.in + bridgeNode.data.out;
+    } else {
+        return bridgeNode.data.in + bridgeNode.data.out + Math.max(...bridgeNode.children.map(item=>calculateMaxBridgeStrength(item)));
+    }
+}
+
 BridgesAPI.strengthOfStrongestBridge = function(componentsStr) {
     var components = componentsStr.split('\n');
     var bridgeTree = BridgesAPI.buildBridgeTree(components);
-    var leaves = bridgeTree.findAllNodes(node=>node.children.length == 0);
-    var leafStrengths = leaves.map(item=>calculateBridgeNodeStrength(item));
-    return Math.max(...leafStrengths);
+    return calculateMaxBridgeStrength(bridgeTree.root);
+    //var leaves = bridgeTree.findAllNodes(node=>node.children.length == 0);
+    //var leafStrengths = leaves.map(item=>calculateBridgeNodeStrength(item));
+    //return Math.max(...leafStrengths);
 };
