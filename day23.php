@@ -27,6 +27,6 @@
                          'input-2',
                          'instructions',
                          'solution-2');
-        echo_js_tying_form_to_function('input-2', 'form-2', 'solution-2', 'CoprocessorAPI.countMulsInvoked');      
+        echo_js_tying_form_to_function('input-2', 'form-2', 'solution-2', 'CoprocessorAPI.finalValueOfH');      
     ?>
 </body>

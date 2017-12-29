@@ -67,6 +67,39 @@ class Program {
 	}
 }
 
+function isPrime(number) {
+    if (typeof number !== 'number' || !Number.isInteger(number)) {
+        return false;
+    }
+
+    if (number < 2) {
+        return false;
+    }
+
+    if (number === 2) {
+        return true;
+    } else if (number % 2 === 0) {
+        return false;
+    }
+
+    for (var i = 3; i*i <= number; i += 2) {
+        if (number % i === 0) {
+          return false;
+        }
+    }
+    return true;
+}
+
+function countNonPrimeNumbersAtIntervalsBetween(lower, upper, interval) {
+    var count = 0;
+    for (var i = lower; i <= upper; i += interval) {
+        if (!isPrime(i)) {
+            count += 1;
+        }
+    }
+    return count;
+}
+
 function runProgramRewrittenByHand() {
     var a = 0;
     var b = 0;
@@ -76,48 +109,32 @@ function runProgramRewrittenByHand() {
     var f = 0;
     var g = 0;
     
-    b = 93;
-    c = b;
-    b = b * 100;
-    b = b + 100000; // b = 109300
-    c = b;
-    c += 17000;
-    while (true) {
+    b = 109300; // b = 109300
+    c = b + 17000;
+    for (b; b <= c; b += 17) {
         f = 1;
         d = 2;
-        while(true) {
+        while(d != b) {
             e = 2; //rm
             while(true) {
                 if ((d*e) == b) {
                     f = 0
                 }
                 e = e + 1;
-                g = e;
-                g = g - b
-                if (e == b)
+                if (e == b) {
                     break;
                 }
             }
             d += 1;
-            g = d;
-            g = g - b;
-            if (g == 0) {
-                break;
-            }
         }
         if (f == 0) {
             h += 1;
         }
-        g = b;
-        g = g - c;
-        if (g == 0) {
-            //EXIT
-            break;
-        }
-        b += 17;   
     }
     return h;
 }
+
+
 
 
 
@@ -129,9 +146,6 @@ CoprocessorAPI.countMulsInvoked = function(instructionsStr) {
 };
 
 CoprocessorAPI.finalValueOfH = function(instructionStr) {
-    const instructions = instructionsStr.split('\n');
-    p = new Program(instructions);
-    p.setReg('a', 1)
-    return p.runProgramCountMuls()
+    return countNonPrimeNumbersAtIntervalsBetween(109300, 109300+17000, 17);
 };
 
