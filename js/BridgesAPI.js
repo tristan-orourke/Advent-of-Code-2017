@@ -53,11 +53,17 @@ function calculateBridgeNodeStrength(bridgeNode) {
     return components;
 }
 
-function calculateMaxBridgeStrength(bridgeNode) {
+function calculateMaxStrengthOfLongestBridge(bridgeNode, parentDepth) {
+    var strength = bridgeNode.data.in + bridgeNode.data.out; 
+    var depth = parentDepth+1;
     if (bridgeNode.children.length == 0) {
-        return bridgeNode.data.in + bridgeNode.data.out;
+        return {depth:depth, strength:strength};
     } else {
-        return bridgeNode.data.in + bridgeNode.data.out + Math.max(...bridgeNode.children.map(item=>calculateMaxBridgeStrength(item)));
+        var childBridges = bridgeNode.children.map(item=>calculateMaxStrengthOfLongestBridge(item, depth));
+        var maxLength = childBridges.reduce((total, item) => Math.max(total, item.depth), 0);
+        var maxLengthChildren = childBridges.filter(item=>item.depth == maxLength);
+        var maxChildStrength = maxLengthChildren.reduce((total, item) => Math.max(total, item.strength), 0);
+        return {depth:maxLength, strength:strength + maxChildStrength};
     }
 }
 
@@ -69,3 +75,9 @@ BridgesAPI.strengthOfStrongestBridge = function(componentsStr) {
     //var leafStrengths = leaves.map(item=>calculateBridgeNodeStrength(item));
     //return Math.max(...leafStrengths);
 };
+
+BridgesAPI.strengthOfLongestBridge = function(componentsStr) {
+    var components = componentsStr.split('\n');
+    var bridgeTree = BridgesAPI.buildBridgeTree(components);
+    return calculateMaxStrengthOfLongestBridge(bridgeTree.root, 0).strength;
+}
