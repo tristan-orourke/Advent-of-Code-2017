@@ -67,6 +67,9 @@
         <li>
             <a id="day24-link" href="day24.php">Day 24: Electromagnetic Bridges</a>
         </li>
+        <li>
+            <a id="day25-link" href="day25.php">Day 25: Turing Machine</a>
+        </li>
     </ul>
 </body>
 
